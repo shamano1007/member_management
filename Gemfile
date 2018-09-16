@@ -39,12 +39,14 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 # Bootstrap4
 gem 'bootstrap', '~> 4.1.3'
-gem 'jquery-rails'
 gem 'font-awesome-rails'
+gem 'jquery-rails'
 
 gem 'mini_racer'
 
 gem 'config'
+
+gem 'activerecord-session_store'
 
 group :development, :test do
   gem 'pry-byebug'
