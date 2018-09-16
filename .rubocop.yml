@@ -1,0 +1,47 @@
+# inherit_from: .rubocop_todo.yml
+AllCops:
+  Exclude:
+    - vendor/bundle/**/*
+    - bin/*
+    - db/**/*
+    - config/**/*
+
+Rails:
+  Enabled: true
+
+# Use &&, instead of and.
+Style/AndOr:
+  Exclude:
+    - app/controllers/**/*_controller.rb
+
+# Missing magic comment `# frozen_string_literal: true`.
+# The frozen string literal comment is only valid in Ruby 2.3+.
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Use only ascii symbols in comments.
+Style/AsciiComments:
+  Enabled: false
+
+# Use nested module/class definitions instead of compact style.
+Style/ClassAndModuleChildren:
+  Exclude:
+    - app/**/*.rb
+
+# Missing top-level class documentation comment.
+Style/Documentation:
+  Enabled: false
+
+# Assignment Branch Condition size for :method is too high.
+Metrics/AbcSize:
+  Max: 20
+
+# Line is too long.
+Metrics/LineLength:
+  Max: 100
+
+# Block has too many lines.
+Metrics/BlockLength:
+  Exclude:
+    - '**/*_spec.rb'
+    - '**/factories/*.rb'
