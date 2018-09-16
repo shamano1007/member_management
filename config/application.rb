@@ -26,8 +26,21 @@ module MemberManagement
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.time_zone = 'Asia/Tokyo'
+    config.active_record.default_timezone = :local
+    config.active_record.time_zone_aware_types = [:datetime, :time]
 
-    # Don't generate system test files.
-    config.generators.system_tests = nil
+    config.i18n.default_locale = :ja
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+
+
+    config.generators do |g|
+      g.stylesheets false
+      g.javascripts false
+      g.helper false
+      g.template_engine false
+      g.test_framework :rspec, view_specs: false, helper_specs: false, fixture: true
+      g.fixture_replacement :factory_girl, dir: 'spec/factories'
+    end
   end
 end
