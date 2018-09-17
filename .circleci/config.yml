@@ -9,13 +9,14 @@ jobs:
       # specify the version you desire here
       - image: circleci/ruby:2.5.1-node-browsers
         environment:
-          - DATABASE_HOST=127.0.0.1
-          - DATABASE_USER=root
-          - DATABASE_PASSWORD=circleci
-          - RAILS_ENV=test
+          DATABASE_HOST: 127.0.0.1
+          DATABASE_USER: root
+          DATABASE_PASSWORD: circleci
+          RAILS_ENV: test
       - image: circleci/mysql:5.7
         environment:
-          - MYSQL_ROOT_PASSWORD=circleci
+          MYSQL_ROOT_PASSWORD: circleci
+          MYSQL_ROOT_HOST: '%'
 
     working_directory: ~/member_management
 
@@ -55,12 +56,10 @@ jobs:
           command: |
             mkdir /tmp/test-results
             bundle exec rspec --format progress \
-                            --out /tmp/test-results/rspec.xml
-          # command: |
-          # bundle exec rspec --format progress \
-          #                 --format RspecJunitFormatter \
-          #                 --out /tmp/test-results/rspec.xml \
-          #                 --format progress
+                            --format RspecJunitFormatter \
+                            --out /tmp/test-results/rspec.xml \
+                            --format progress
+
 
       # collect reports
       - store_test_results:
