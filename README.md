@@ -8,22 +8,25 @@
 `$ docker pull ruby:2.5.1`  
 `$ docker pull mysql:5.7`  
 
-## webコンテナに接続
-`docker attach web`  
-
 ## 初回起動
 コンテナ作成  
 `$ docker-compose up`  
 
-`webコンテナ`に接続する  
-
-DB作成
-`$ rake db:create`  
-`$ rake db:migrate`  
-
 ## コンテナ起動(初回以降)
 `$ docker-compose start`  
 
-## railseサーバー起動
+---
+**以降はwebコンテナに接続して実施**
+# webコンテナに接続
+`docker attach web`  
+
+# DB作成
+`$ rake db:create`  
+`$ rake db:migrate`  
+
+# 初期データ挿入
+`$ rake db:seed_fu`  
+
+# railseサーバー起動
 `webコンテナ`に接続する  
 `$ rails s -b 0.0.0.0`  
