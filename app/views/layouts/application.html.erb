@@ -6,13 +6,18 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= controller_css_include %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= controller_js_include %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <%= yield %>
+    <div class="container">
+      <%= content_tag(:h1, page_title) %>
+      
+      <%= content_tag_if(alert.present?, :p, alert, class: 'alert alert-info') %>
+      <%= content_tag_if(flash[:error].present?, :p, flash[:error], class: 'alert alert-danger') %>
+      <%= yield %>
+    <div>
   </body>
 </html>
