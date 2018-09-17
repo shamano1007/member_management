@@ -36,6 +36,8 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'seed-fu'
+
 gem 'devise'
 # Bootstrap4
 gem 'bootstrap', '~> 4.1.3'
@@ -66,6 +68,7 @@ end
 group :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

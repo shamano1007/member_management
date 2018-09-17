@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザ
+    attributes:
+      user:
+        login_id: ログインID
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+        encrypted_password: 暗号化パスワード
+        reset_password_token: パスワードリセット用トークン
+        reset_password_sent_at: パスワードリセット送信時刻
+        remember_created_at: ログイン記憶時刻
+        created_at: 作成日
+        updated_at: 更新日
