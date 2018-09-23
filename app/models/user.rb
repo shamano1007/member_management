@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  extend Enumerize
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   # 参考
@@ -6,4 +7,6 @@ class User < ApplicationRecord
   # devise :database_authenticatable, :registerable,
   #        :recoverable, :rememberable, :trackable, :validatable
   devise :database_authenticatable, :rememberable, :timeoutable
+
+  enumerize :role, in: %i[general management], default: :general
 end

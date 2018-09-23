@@ -5,11 +5,18 @@ ja:
     attributes:
       user:
         login_id: ログインID
+        role: 権限
         password: パスワード
         password_confirmation: パスワード（確認用）
         encrypted_password: 暗号化パスワード
         reset_password_token: パスワードリセット用トークン
         reset_password_sent_at: パスワードリセット送信時刻
         remember_created_at: ログイン記憶時刻
+        name: 名前
         created_at: 作成日
         updated_at: 更新日
+  enumerize:
+    user:
+      role:
+        general: 一般
+        management: 管理
