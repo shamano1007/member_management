@@ -12,11 +12,15 @@
   </head>
 
   <body>
-    <div class="container">
+    <%= render 'layouts/nav' if user_signed_in? %>
+
+    <div class="container m-top-10">
       <%= content_tag(:h1, page_title) %>
-      
+
+      <%= content_tag_if(notice.present?, :p, notice, class: 'alert alert-info') %>
       <%= content_tag_if(alert.present?, :p, alert, class: 'alert alert-info') %>
       <%= content_tag_if(flash[:error].present?, :p, flash[:error], class: 'alert alert-danger') %>
+
       <%= yield %>
     <div>
   </body>
