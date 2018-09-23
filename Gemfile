@@ -52,6 +52,7 @@ gem 'mini_racer'
 gem 'config'
 
 gem 'activerecord-session_store'
+gem 'enumerize'
 
 group :development, :test do
   gem 'pry-byebug'
