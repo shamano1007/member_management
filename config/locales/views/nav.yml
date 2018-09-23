@@ -1,0 +1,5 @@
+ja:
+  layouts:
+    nav:
+      logout: ログアウト
+      admin: 管理
