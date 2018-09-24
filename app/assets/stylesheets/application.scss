@@ -25,3 +25,8 @@ table {
   &.btn-edit { @include button-variant(#28a745, #28a745); }
   &.btn-update { @include button-variant(#28a745, #28a745); }
 }
+
+.alert {
+  ul { margin-bottom: 0px; }
+  &.alert-error { @include alert-variant(#ea5f6d, #ea5f6d, #343a40) }
+}

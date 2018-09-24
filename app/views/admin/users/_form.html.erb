@@ -1,3 +1,5 @@
+<%= error_messages(user) %>
+
 <%= form_for [:admin, user] do |form| %>
   <%= form.line_field(:login_id) { |f| f.text_field :login_id, class: 'form-control' } %>
   <%= form.line_field(:name) { |f| f.text_field :name, class: 'form-control' } %>

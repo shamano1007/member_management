@@ -16,4 +16,13 @@ module ApplicationHelper
     options[:builder] = ApplicationFormBuilder
     super(record, options, &block)
   end
+
+  def error_messages(obj)
+    return unless obj.errors.any?
+    content_tag(:div, class: 'alert alert-error') do
+      content_tag(:ul) do
+        safe_join(obj.errors.full_messages.map { |m| content_tag(:li, m) })
+      end
+    end
+  end
 end
