@@ -1,11 +1,27 @@
  @import 'bootstrap';
 
+h1 {
+  margin-bottom: 1em;
+}
+
 .m-top-10 {
   margin-top: 10px;
+}
+
+.m-bottom-10 {
+  margin-bottom: 10px;
 }
 
 table {
   thead {
     background-color: rgba(255, 255, 128, .5);
   }
+}
+
+.btn {
+  &.btn-back { @include button-variant(#ffc107, #ffc107); }
+  &.btn-new { @include button-variant(#007bff, #007bff); }
+  &.btn-create { @include button-variant(#17a2b8, #17a2b8); }
+  &.btn-edit { @include button-variant(#28a745, #28a745); }
+  &.btn-update { @include button-variant(#28a745, #28a745); }
 }

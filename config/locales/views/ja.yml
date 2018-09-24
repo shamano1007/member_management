@@ -1,4 +1,9 @@
 ja:
   title: メンバー管理
   buttons:
+    back: 戻る
     login: ログイン
+    new: 新規作成
+    create: 登録
+  messages:
+    create_success: '登録が完了しました。'

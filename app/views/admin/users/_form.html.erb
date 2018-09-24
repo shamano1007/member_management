@@ -1,0 +1,14 @@
+<%= form_for [:admin, user] do |form| %>
+  <%= form.line_field(:login_id) { |f| f.text_field :login_id, class: 'form-control' } %>
+  <%= form.line_field(:name) { |f| f.text_field :name, class: 'form-control' } %>
+  <%= form.line_field(:role) { |f| f.select :role, User.role.options, {}, class: 'form-control' } %>
+  <%= form.line_field(:password) { |f| f.password_field :password, class: 'form-control' } %>
+  <%= form.line_field(:password_confirmation) { |f| f.password_field :password_confirmation, class: 'form-control' } %>
+
+  <div class="col-12 clearfix">
+    <div class="float-right">
+      <%= back_button(admin_users_path) %>
+      <%= form.create_or_update_submit %>
+    </div>
+  </div>
+<% end %>

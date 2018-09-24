@@ -11,4 +11,9 @@ module ApplicationHelper
   def content_tag_if(flag, name, content_or_options_with_block = nil, options = nil, &block)
     content_tag(name, content_or_options_with_block, options, true, &block) if flag
   end
+
+  def form_for(record, options = {}, &block)
+    options[:builder] = ApplicationFormBuilder
+    super(record, options, &block)
+  end
 end
