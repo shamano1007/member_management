@@ -3,3 +3,5 @@ ja:
     nav:
       logout: ログアウト
       admin: 管理
+      admins:
+        user: ユーザー管理
