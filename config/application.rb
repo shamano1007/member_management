@@ -33,16 +33,11 @@ module MemberManagement
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
 
+    # modelsフォルダの階層を変更
+    config.paths.add "#{Rails.root}/app/models/validators", eager_load: true
+    config.paths.add "#{Rails.root}/app/models/active_records", eager_load: true
+
     # mailer setting
     config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
-    config.generators do |g|
-      g.stylesheets false
-      g.javascripts false
-      g.helper false
-      g.template_engine false
-      g.test_framework :rspec, view_specs: false, helper_specs: false, fixture: true
-      g.fixture_replacement :factory_bot, dir: 'spec/factories'
-    end
   end
 end
