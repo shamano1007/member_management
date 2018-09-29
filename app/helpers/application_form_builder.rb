@@ -1,7 +1,7 @@
 class ApplicationFormBuilder < ActionView::Helpers::FormBuilder
-  def line_field(label, &block)
+  def line_field(label)
     content_tag(:div, class: 'form-group row') do
-      safe_join([content_label(label), content_tag(:div, block.call(self), class: 'col-10')])
+      safe_join([content_label(label), content_tag(:div, yield(self), class: 'col-10')])
     end
   end
 
