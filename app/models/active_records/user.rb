@@ -13,5 +13,5 @@ class User < ApplicationRecord
   validates :login_id, presence: true, uniqueness: true
   validates :name, presence: true
   validates :role, presence: true
-  validates :password, presence: true, password: true, confirmation: true
+  validates :password, presence: true, alphanumeric: true, confirmation: true
 end
