@@ -3,9 +3,10 @@ require 'rails_helper'
 RSpec.describe Admin::UsersController, type: :request do
   describe 'GET #index' do
     non_login_spec(:get, :admin_users_path)
+    non_admin_user_spec(:get, :admin_users_path)
 
     context 'ログイン済み' do
-      login_user
+      login_user(admin: true)
       before { get admin_users_path }
 
       it '成功すること' do
@@ -16,9 +17,10 @@ RSpec.describe Admin::UsersController, type: :request do
 
   describe 'GET #new' do
     non_login_spec(:get, :new_admin_user_path)
+    non_admin_user_spec(:get, :new_admin_user_path)
 
     context 'ログイン済み' do
-      login_user
+      login_user(admin: true)
       before { get new_admin_user_path }
 
       it '成功すること' do
@@ -29,11 +31,12 @@ RSpec.describe Admin::UsersController, type: :request do
 
   describe 'POST #create' do
     non_login_spec(:post, :admin_users_path)
+    non_admin_user_spec(:post, :admin_users_path)
 
     context 'ログイン済み' do
       let(:user_params) { attributes_for(:user) }
 
-      login_user
+      login_user(admin: true)
       before { post admin_users_path, params: { user: user_params } }
 
       it '成功すること' do
@@ -51,11 +54,12 @@ RSpec.describe Admin::UsersController, type: :request do
 
   describe 'GET #edit' do
     non_login_spec(:get, :edit_admin_user_path, 1)
+    non_admin_user_spec(:get, :edit_admin_user_path, 1)
 
     context 'ログイン済み' do
       let(:user) { create(:user, login_id: 'editUser') }
 
-      login_user
+      login_user(admin: true)
       before { get edit_admin_user_path(user) }
 
       it '成功すること' do
@@ -66,10 +70,11 @@ RSpec.describe Admin::UsersController, type: :request do
 
   describe 'PATCH #edit' do
     non_login_spec(:patch, :admin_user_path, 1)
+    non_admin_user_spec(:patch, :admin_user_path, 1)
 
     context 'ログイン済み' do
       let(:user) { create(:user, login_id: 'editUser', password: 'password001') }
-      login_user
+      login_user(admin: true)
       before { patch admin_user_path(user), params: { user: user_params } }
 
       context 'パスワードを変更しない' do
@@ -134,9 +139,10 @@ RSpec.describe Admin::UsersController, type: :request do
 
   describe 'delete #destroy' do
     non_login_spec(:delete, :admin_user_path, 1)
+    non_admin_user_spec(:delete, :admin_user_path, 1)
 
     context 'ログイン済み' do
-      login_user
+      login_user(admin: true)
       let!(:user1) { create(:user, login_id: 'deleteUser1') }
       let!(:user2) { create(:user, login_id: 'deleteUser2') }
       context 'ログインユーザーを削除' do
