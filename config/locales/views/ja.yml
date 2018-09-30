@@ -5,5 +5,8 @@ ja:
     login: ログイン
     new: 新規作成
     create: 登録
+    edit: 編集
+    update: 更新
   messages:
-    create_success: '登録が完了しました。'
+    create_success: 登録が完了しました。
+    update_success: 更新が完了しました。

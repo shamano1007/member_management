@@ -16,6 +16,20 @@ class Admin::UsersController < Admin::BaseController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.assign_attributes(user_params)
+    if @user.save
+      redirect_to admin_users_path, notice: i18n_message(:update_success)
+    else
+      render :new
+    end
+  end
+
   private
 
   def user_params

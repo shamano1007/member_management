@@ -12,9 +12,20 @@ h1 {
   margin-bottom: 10px;
 }
 
+form {
+  .required::after {
+    color: red;
+    content: '※'
+  }
+}
+
 table {
   thead {
     background-color: rgba(255, 255, 128, .5);
+  }
+  .operation {
+    width: 5%;
+    padding: 0.25rem;
   }
 }
 
