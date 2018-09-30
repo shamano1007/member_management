@@ -131,4 +131,31 @@ RSpec.describe Admin::UsersController, type: :request do
       end
     end
   end
+
+  describe 'delete #destroy' do
+    non_login_spec(:delete, :admin_user_path, 1)
+
+    context 'ログイン済み' do
+      login_user
+      let!(:user1) { create(:user, login_id: 'deleteUser1') }
+      let!(:user2) { create(:user, login_id: 'deleteUser2') }
+      context 'ログインユーザーを削除' do
+        before { delete admin_user_path(login_user) }
+        it '削除されないこと' do
+          expect(User.exists?(id: login_user.id)).to be true
+          expect(User.exists?(id: user1.id)).to be true
+          expect(User.exists?(id: user2.id)).to be true
+        end
+      end
+
+      context 'ログインユーザー以外を削除' do
+        before { delete admin_user_path(user1) }
+        it '対象ユーザーが削除されること' do
+          expect(User.exists?(id: login_user.id)).to be true
+          expect(User.exists?(id: user1.id)).to be false
+          expect(User.exists?(id: user2.id)).to be true
+        end
+      end
+    end
+  end
 end
