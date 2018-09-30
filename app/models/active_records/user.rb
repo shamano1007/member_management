@@ -8,7 +8,7 @@ class User < ApplicationRecord
   #        :recoverable, :rememberable, :trackable, :validatable
   devise :database_authenticatable, :rememberable, :timeoutable
 
-  enumerize :role, in: %i[general management], default: :general
+  enumerize :role, in: %i[general admin], default: :general
 
   validates :login_id, presence: true, uniqueness: true,
                        alphanumeric: true, length: { minimum: 6 }

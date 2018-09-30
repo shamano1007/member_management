@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::BaseController
   def index
-    @users = User.order(role: :desc).order(:login_id)
+    @users = User.order(:role).order(:login_id)
   end
 
   def new
