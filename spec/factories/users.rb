@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :user do
-    login_id { 'loginid01' }
-    password { 'password' }
-    password_confirmation { 'password' }
-    name { 'ユーザー名' }
+    sequence(:login_id) { |n| "loginid#{n}" }
+    sequence(:password) { |n| "password#{n}" }
+    password_confirmation { password }
+    sequence(:name) { |n| "ユーザー名#{n}" }
     role { :general }
   end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe HomeController, type: :request do
   describe 'GET #show' do
-    non_login_spec
+    non_login_spec(:get, :root_path)
 
     context 'ログイン済み' do
       login_user

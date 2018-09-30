@@ -1,11 +1,11 @@
 <%= error_messages(user) %>
 
-<%= form_for [:admin, user] do |form| %>
-  <%= form.line_field(:login_id) { |f| f.text_field :login_id, class: 'form-control' } %>
-  <%= form.line_field(:name) { |f| f.text_field :name, class: 'form-control' } %>
-  <%= form.line_field(:role) { |f| f.select :role, User.role.options, {}, class: 'form-control' } %>
-  <%= form.line_field(:password) { |f| f.password_field :password, class: 'form-control' } %>
-  <%= form.line_field(:password_confirmation) { |f| f.password_field :password_confirmation, class: 'form-control' } %>
+<%= form_for [:admin, user], label_col: 3, field_col: 9 do |form| %>
+  <%= form.line_field(:login_id, req: true) { |f| f.text_field :login_id, class: 'form-control' } %>
+  <%= form.line_field(:name, req: true) { |f| f.text_field :name, class: 'form-control' } %>
+  <%= form.line_field(:role, req: true) { |f| f.select :role, User.role.options, {}, class: 'form-control' } %>
+  <%= form.line_field(:password, req: user.new_record?) { |f| f.password_field :password, class: 'form-control' } %>
+  <%= form.line_field(:password_confirmation, req: user.new_record?) { |f| f.password_field :password_confirmation, class: 'form-control' } %>
 
   <div class="col-12 clearfix">
     <div class="float-right">
