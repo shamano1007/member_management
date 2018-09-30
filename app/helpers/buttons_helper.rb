@@ -11,6 +11,11 @@ module ButtonsHelper
     link_to button_name(:edit), path, class: 'btn btn-edit'
   end
 
+  def destroy_button(path)
+    link_to button_name(:destroy), path, class: 'btn btn-destroy', method: :delete,
+                                         data: { confirm: t('messages.destroy_confirm') }
+  end
+
   def back_button(path)
     link_to button_name(:back), path, class: 'btn btn-back'
   end
