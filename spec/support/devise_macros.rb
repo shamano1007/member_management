@@ -1,7 +1,7 @@
 module DeviseMacros
   def login_user(params = {})
-    let(:user) { create(:user, params) }
-    before { sign_in user }
+    let(:login_user) { create(:user, params) }
+    before { sign_in login_user }
   end
 
   def non_login_spec

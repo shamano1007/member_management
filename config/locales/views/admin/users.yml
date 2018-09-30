@@ -3,3 +3,7 @@ ja:
     users:
       index:
         title: ユーザー管理
+      new:
+        title: ユーザー新規作成
+      create:
+        title: ユーザー新規作成

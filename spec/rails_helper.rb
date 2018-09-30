@@ -64,4 +64,6 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :request
   # config.include Devise::Test::ControllerHelpers, type: :view
   config.extend DeviseMacros, type: :request
+  config.include ModelMacros, type: :request
+  config.extend ModelValidatorMacros, type: :model
 end

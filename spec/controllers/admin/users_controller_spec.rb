@@ -13,4 +13,40 @@ RSpec.describe Admin::UsersController, type: :request do
       end
     end
   end
+
+  describe 'GET #new' do
+    non_login_spec
+
+    context 'ログイン済み' do
+      login_user
+      before { get new_admin_user_path }
+
+      it '成功すること' do
+        expect(response).to have_http_status(:success)
+      end
+    end
+  end
+
+  describe 'POST #create' do
+    non_login_spec
+
+    context 'ログイン済み' do
+      login_user
+      let(:user_params) do
+        user_attributes = attributes_for(:user)
+        user_attributes.merge(password_confirmation: user_attributes[:password])
+      end
+
+      before { post admin_users_path, params: { user: user_params } }
+
+      it '成功すること' do
+        expect(response).to have_http_status(:success)
+      end
+
+      it 'ユーザーが新規作成されること' do
+        user = User.find_by!(login_id: user_params[:login_id])
+        expect_model(user, user_params, %i[name])
+      end
+    end
+  end
 end

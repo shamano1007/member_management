@@ -1,0 +1,3 @@
+validators:
+  alphanumeric_validator:
+    format: !ruby/regexp /^[a-z|\d]+$/i
