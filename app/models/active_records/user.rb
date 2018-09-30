@@ -10,8 +10,10 @@ class User < ApplicationRecord
 
   enumerize :role, in: %i[general management], default: :general
 
-  validates :login_id, presence: true, uniqueness: true, alphanumeric: true
+  validates :login_id, presence: true, uniqueness: true,
+                       alphanumeric: true, length: { minimum: 6 }
   validates :name, presence: true
   validates :role, presence: true
-  validates :password, presence: true, alphanumeric: true, confirmation: true
+  validates :password, presence: true, alphanumeric: true,
+                       length: { minimum: 6 }, confirmation: true
 end

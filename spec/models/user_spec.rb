@@ -7,8 +7,10 @@ RSpec.describe User, type: :model do
     context 'ログインID' do
       check_for_required(FactoryBot.build(:user), :login_id, 'loginid')
       check_for_alphanumeric(FactoryBot.build(:user), :login_id,
-                             value: 'loginid01',
+                             value: 'Loginid01',
                              error_value: ['ああああああ', 'ＡＡＡＡＡＡ', '１２３４５６', 'AAAA A'])
+      check_for_length_min(FactoryBot.build(:user), :login_id, 'A', min: 6)
+
       context '重複' do
         before { create(:user, login_id: 'loginid01') }
         validator_error(FactoryBot.build(:user, login_id: 'loginid01'), :login_id)
@@ -18,8 +20,11 @@ RSpec.describe User, type: :model do
     context 'パスワード' do
       check_for_required(FactoryBot.build(:user), :login_id, 'loginid')
       check_for_alphanumeric(FactoryBot.build(:user), :login_id,
-                             value: 'password',
+                             value: 'Password',
                              error_value: ['ああああああ', 'ＡＡＡＡＡＡ', '１２３４５６', 'AAAA A'])
+      check_for_length_min(FactoryBot.build(:user, password_confirmation: 'AAAAAA'),
+                           :password, 'A', min: 6)
+
       context '確認パスワードと一致しない' do
         validator_error(FactoryBot.build(:user, password: 'password',
                                                 password_confirmation: 'loginid01'),
