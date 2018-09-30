@@ -19,7 +19,10 @@
         <td><%= user.login_id %></td>
         <td><%= user.name %></td>
         <td><%= user.role_text %></td>
-        <td class="operation"><%= edit_button(edit_admin_user_path(user)) %></td>
+        <td class="operation">
+          <%= edit_button(edit_admin_user_path(user)) %>
+          <%= destroy_button(admin_user_path(user)) unless current_user.id == user.id %>
+        </td>
       </tr>
     <% end %>
   </tbody>

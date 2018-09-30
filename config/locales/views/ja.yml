@@ -7,6 +7,9 @@ ja:
     create: 登録
     edit: 編集
     update: 更新
+    destroy: 削除
   messages:
     create_success: 登録が完了しました。
     update_success: 更新が完了しました。
+    destroy_success: 削除が完了しました。
+    destroy_confirm: "削除します。\nよろしいでしょうか？"

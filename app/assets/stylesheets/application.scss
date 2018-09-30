@@ -26,6 +26,7 @@ table {
   .operation {
     width: 5%;
     padding: 0.25rem;
+    white-space: nowrap;
   }
 }
 
@@ -35,6 +36,7 @@ table {
   &.btn-create { @include button-variant(#17a2b8, #17a2b8); }
   &.btn-edit { @include button-variant(#28a745, #28a745); }
   &.btn-update { @include button-variant(#28a745, #28a745); }
+  &.btn-destroy { @include button-variant(#dc3545, #dc3545); }
 }
 
 .alert {

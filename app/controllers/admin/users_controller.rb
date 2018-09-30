@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::BaseController
   def index
-    @users = User.order(:login_id)
+    @users = User.order(role: :desc).order(:login_id)
   end
 
   def new
@@ -29,6 +29,14 @@ class Admin::UsersController < Admin::BaseController
     else
       render :new
     end
+  end
+
+  def destroy
+    unless current_user.id == params[:id].to_i
+      user = User.find_by(id: params[:id])
+      user&.destroy
+    end
+    redirect_to admin_users_path, notice: i18n_message(:destroy_success)
   end
 
   private
