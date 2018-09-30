@@ -24,6 +24,7 @@ class Admin::UsersController < Admin::BaseController
     @user = User.find(params[:id])
     @user.assign_attributes(user_params)
     if @user.save
+      sign_in(@user, bypass: true) if current_user.id == @user.id
       redirect_to admin_users_path, notice: i18n_message(:update_success)
     else
       render :new
