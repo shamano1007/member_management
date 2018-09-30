@@ -4,10 +4,10 @@ module DeviseMacros
     before { sign_in login_user }
   end
 
-  def non_login_spec(method, path)
+  def non_login_spec(method, path, path_param = {})
     context '未済み' do
       before do
-        public_send(method, Rails.application.routes.url_helpers.public_send(path))
+        public_send(method, Rails.application.routes.url_helpers.public_send(path, path_param))
       end
 
       it 'リダイレクトされること' do
