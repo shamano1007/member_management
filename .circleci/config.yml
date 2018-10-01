@@ -13,6 +13,7 @@ jobs:
           DATABASE_USER: root
           DATABASE_PASSWORD: circleci
           RAILS_ENV: test
+          CC_TEST_REPORTER_ID: e37553314b37fb2cf28f69428d7d814c2620be85ba3d1d3ecc8e40150564807e
       - image: circleci/mysql:5.7
         environment:
           MYSQL_ROOT_PASSWORD: circleci
@@ -50,16 +51,24 @@ jobs:
           name: run rubocop
           command: bundle exec rubocop
 
+      # Download test-reporter
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+
       # run tests!
       - run:
           name: run tests
           command: |
+            ./cc-test-reporter before-build
             mkdir /tmp/test-results
             bundle exec rspec --format progress \
                             --format RspecJunitFormatter \
                             --out /tmp/test-results/rspec.xml \
                             --format progress
-
+            ./cc-test-reporter after-build --coverage-input-type simplecov --exit-code $?
 
       # collect reports
       - store_test_results:
