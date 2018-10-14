@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :skill do
-    name 'ruby'
-    remarks "オブジェクト指向スクリプト言語\nオブジェクト指向プログラミング"
+    sequence(:name) { |n| "ruby_#{n}" }
+    sequence(:remarks) { |n| "オブジェクト指向スクリプト言語\nオブジェクト指向プログラミング\n#{n}" }
   end
 end
