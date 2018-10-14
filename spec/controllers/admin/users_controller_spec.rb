@@ -34,20 +34,34 @@ RSpec.describe Admin::UsersController, type: :request do
     non_admin_user_spec(:post, :admin_users_path)
 
     context 'ログイン済み' do
-      let(:user_params) { attributes_for(:user) }
-
       login_user(admin: true)
       before { post admin_users_path, params: { user: user_params } }
 
-      it '成功すること' do
-        expect(response).to have_http_status(:found)
-        expect(response).to redirect_to(:admin_users)
+      context '正常な値を設定する' do
+        let(:user_params) { attributes_for(:user) }
+
+        it '成功すること' do
+          expect(response).to have_http_status(:found)
+          expect(response).to redirect_to(:admin_users)
+        end
+
+        it 'ユーザーが新規作成されること' do
+          user = User.find_by!(login_id: user_params[:login_id])
+          expect_model(user, user_params, %i[name role])
+          expect(user.valid_password?(user_params[:password])).to be true
+        end
       end
 
-      it 'ユーザーが新規作成されること' do
-        user = User.find_by!(login_id: user_params[:login_id])
-        expect_model(user, user_params, %i[name role])
-        expect(user.valid_password?(user_params[:password])).to be true
+      context '異常な値を設定する' do
+        let(:user_params) { attributes_for(:user, login_id: '') }
+
+        it '成功すること' do
+          expect(response).to have_http_status(:success)
+        end
+
+        it 'スキルが新規作成されないこと' do
+          expect(User.exists?(login_id: user_params[:login_id])).to be false
+        end
       end
     end
   end
