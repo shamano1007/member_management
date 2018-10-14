@@ -7,5 +7,10 @@ RSpec.describe Skill, type: :model do
     context '名前' do
       check_for_required(FactoryBot.build(:skill), :name, 'ruby')
     end
+
+    context '重複' do
+      before { create(:skill, name: 'ruby') }
+      validator_error(FactoryBot.build(:skill, name: 'ruby'), :name)
+    end
   end
 end
