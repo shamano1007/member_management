@@ -1,0 +1,8 @@
+ja:
+  profiles:
+    show:
+      title: プロフィール
+    create:
+      title: プロフィール
+    update:
+      title: プロフィール

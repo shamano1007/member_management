@@ -13,3 +13,6 @@ ja:
     update_success: 更新が完了しました。
     destroy_success: 削除が完了しました。
     destroy_confirm: "削除します。\nよろしいでしょうか？"
+  label:
+    closest_line: 線
+    closest_station: 駅

@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   extend Enumerize
+  has_one :profile, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   # 参考

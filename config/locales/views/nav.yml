@@ -2,6 +2,7 @@ ja:
   layouts:
     nav:
       logout: ログアウト
+      profile: プロフィール
       admin: 管理
       admins:
         user: ユーザー管理

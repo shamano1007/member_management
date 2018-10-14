@@ -1,0 +1,21 @@
+<%= error_messages(@profile) %>
+
+<%= form_for @profile, url: profile_path, label_col: 3, field_col: 9 do |form| %>
+  <%= form.line_field(:birthdate, req: true) { |f| f.text_field :birthdate, class: 'form-control datepicker', autocomplete: 'off' } %>
+  <%= form.line_field(:address) { |f| f.text_field :address, class: 'form-control' } %>
+  <%= content_tag(:div, class: 'form-group row') do %>
+    <%= form.content_label(:closest_station) %>
+    <%= content_tag(:div, class: 'col-9 row') do %>
+      <%= content_tag(:div, form.text_field(:closest_line, class: 'form-control'), class: 'col-4') %>
+      <%= content_tag(:div, t('label.closest_line')) %>
+      <%= content_tag(:div, form.text_field(:closest_station, class: 'form-control'), class: 'col-4') %>
+      <%= content_tag(:div, t('label.closest_station')) %>
+    <% end %>
+  <% end %>
+
+  <div class="col-12 clearfix">
+    <div class="float-right">
+      <%= form.create_or_update_submit %>
+    </div>
+  </div>
+<% end %>

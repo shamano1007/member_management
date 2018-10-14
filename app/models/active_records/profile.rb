@@ -1,3 +1,5 @@
 class Profile < ApplicationRecord
-  validates :birthdate, presence: true
+  belongs_to :user
+
+  validates :birthdate, date: true
 end

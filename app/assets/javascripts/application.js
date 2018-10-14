@@ -15,3 +15,12 @@
 // require activestorage
 //= require turbolinks
 //= require bootstrap
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.ja.js
+
+$(document).on('turbolinks:load', function(){
+  $('.datepicker').datepicker({
+    language: 'ja',
+    autoclose: true
+  });
+});
