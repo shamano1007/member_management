@@ -16,6 +16,7 @@
         <%= link_to t('.admin'), '#', id: :admins, class: 'nav-link dropdown-toggle', 'data-toggle' => :dropdown, 'aria-haspopup' => true, 'aria-expanded': false %>
         <div class="dropdown-menu" aria-labelledby="admins">
           <%= nav_link t('.admins.user'), admin_users_path, clazz: 'dropdown-item' %>
+          <%= nav_link t('.admins.skill'), admin_skills_path, clazz: 'dropdown-item' %>
           <!-- <a class="dropdown-item active" href="#">Action</a> -->
           <!-- <a class="dropdown-item" href="#">Another action</a> -->
         </div>

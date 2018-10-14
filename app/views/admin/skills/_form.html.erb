@@ -1,0 +1,13 @@
+<%= error_messages(skill) %>
+
+<%= form_for [:admin, skill], label_col: 3, field_col: 9 do |form| %>
+  <%= form.line_field(:name, req: true) { |f| f.text_field :name, class: 'form-control' } %>
+  <%= form.line_field(:remarks) { |f| f.text_area :remarks, class: 'form-control', rows: 10 } %>
+
+  <div class="col-12 clearfix">
+    <div class="float-right">
+      <%= back_button(admin_skills_path) %>
+      <%= form.create_or_update_submit %>
+    </div>
+  </div>
+<% end %>

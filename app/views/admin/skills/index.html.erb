@@ -1,0 +1,27 @@
+<div class="col-12 clearfix">
+  <div class="float-right">
+    <%= new_button(new_admin_skill_path) %>
+  </div>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th><%= Skill.human_attribute_name :name %></th>
+      <th><%= Skill.human_attribute_name :remarks %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @skills&.each do |skill| %>
+      <tr>
+        <td><%= skill.name %></td>
+        <td><%= truncate(skill.remarks, length: 10) %></td>
+        <td class="operation">
+          <%= edit_button(edit_admin_skill_path(skill)) %>
+          <%= destroy_button(admin_skill_path(skill)) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

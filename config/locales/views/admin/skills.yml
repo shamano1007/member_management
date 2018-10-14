@@ -1,0 +1,13 @@
+ja:
+  admin:
+    skills:
+      index:
+        title: スキル管理
+      new:
+        title: スキル新規作成
+      create:
+        title: スキル新規作成
+      edit:
+        title: スキル編集
+      update:
+        title: スキル編集
