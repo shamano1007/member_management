@@ -45,3 +45,8 @@ Metrics/BlockLength:
   Exclude:
     - '**/*_spec.rb'
     - '**/factories/*.rb'
+
+# メソッドの行数をチェック
+Metrics/MethodLength:
+  Exclude:
+    - 'spec/support/*.rb'
