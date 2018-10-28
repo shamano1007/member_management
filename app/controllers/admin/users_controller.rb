@@ -27,7 +27,7 @@ class Admin::UsersController < Admin::BaseController
       sign_in(@user, bypass: true) if current_user.id == @user.id
       redirect_to admin_users_path, notice: i18n_message(:update_success)
     else
-      render :new
+      render :edit
     end
   end
 
