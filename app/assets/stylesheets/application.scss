@@ -1,4 +1,5 @@
- @import 'bootstrap';
+@import 'bootstrap';
+@import 'bootstrap-datepicker';
 
 h1 {
   margin-bottom: 1em;
@@ -17,6 +18,10 @@ form {
     color: red;
     content: '※'
   }
+}
+
+.datepicker[readonly] {
+  background-color: #ffffff;
 }
 
 table {

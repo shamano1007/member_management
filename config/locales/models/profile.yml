@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      profile: プロフィール
+    attributes:
+      profile:
+        birthdate: 生年月日
+        address: 住所
+        closest_line: 最寄線
+        closest_station: 最寄駅
