@@ -26,7 +26,7 @@ class Admin::SkillsController < Admin::BaseController
     if @skill.save
       redirect_to admin_skills_path, notice: i18n_message(:update_success)
     else
-      render :new
+      render :edit
     end
   end
 
