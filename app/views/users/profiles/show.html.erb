@@ -1,6 +1,6 @@
 <%= error_messages(@profile) %>
 
-<%= form_for @profile, url: profile_path, label_col: 3, field_col: 9 do |form| %>
+<%= form_for @profile, url: users_profile_path, label_col: 3, field_col: 9 do |form| %>
   <%= form.line_field(:birthdate, req: true) { |f| f.text_field :birthdate, class: 'form-control datepicker', autocomplete: 'off' } %>
   <%= form.line_field(:address) { |f| f.text_field :address, class: 'form-control' } %>
   <%= content_tag(:div, class: 'form-group row') do %>

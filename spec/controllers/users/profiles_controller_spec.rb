@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe ProfilesController, type: :request do
+RSpec.describe Users::ProfilesController, type: :request do
   describe 'GET #show' do
-    non_login_spec(:get, :profile_path)
+    non_login_spec(:get, :users_profile_path)
 
     context 'ログイン済み' do
       login_user
-      before { get profile_path }
+      before { get users_profile_path }
 
       it '成功すること' do
         expect(response).to have_http_status(:success)
@@ -15,18 +15,18 @@ RSpec.describe ProfilesController, type: :request do
   end
 
   describe 'POST #create' do
-    non_login_spec(:post, :profile_path)
+    non_login_spec(:post, :users_profile_path)
 
     context 'ログイン済み' do
       login_user
-      before { post profile_path, params: { profile: profile_params } }
+      before { post users_profile_path, params: { profile: profile_params } }
 
       context '正常な値を設定する' do
         let(:profile_params) { attributes_for(:profile) }
 
         it '成功すること' do
           expect(response).to have_http_status(:found)
-          expect(response).to redirect_to(:profile)
+          expect(response).to redirect_to(:users_profile)
         end
 
         it 'プロフィールが新規作成されること' do
@@ -57,20 +57,20 @@ RSpec.describe ProfilesController, type: :request do
   end
 
   describe 'PATCH #update' do
-    non_login_spec(:patch, :profile_path)
+    non_login_spec(:patch, :users_profile_path)
 
     context 'ログイン済み' do
       login_user
       let(:before_profile) { attributes_for(:profile, user_id: login_user.id) }
       let!(:profile) { create(:profile, before_profile) }
-      before { patch profile_path, params: { profile: profile_params } }
+      before { patch users_profile_path, params: { profile: profile_params } }
 
       context '正常な値を設定' do
         let(:profile_params) { attributes_for(:profile) }
 
         it '成功すること' do
           expect(response).to have_http_status(:found)
-          expect(response).to redirect_to(:profile)
+          expect(response).to redirect_to(:users_profile)
         end
 
         it 'プロフィールが更新されること' do
