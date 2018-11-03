@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   namespace :users do
     resource :profile, except: :destroy
+    resource :password, only: :update
   end
 
   namespace :admin do

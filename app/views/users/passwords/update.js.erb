@@ -1,0 +1,6 @@
+$('#user_password, #user_password_confirmation').val('');
+<% if current_user.errors.any? %>
+  $('#password_alert').html('<%= j(error_messages(current_user)) %>');
+<% else %>
+  $('#password_alert').html("<%= j(content_tag(:p, i18n_message(:update_success), class: 'alert alert-info')) %>");
+<% end %>
