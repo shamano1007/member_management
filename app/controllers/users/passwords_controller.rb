@@ -2,7 +2,7 @@ class Users::PasswordsController < ApplicationController
   def update
     return unless current_user.update_without_current_password(password_params)
 
-    sign_in(current_user, bypass: true)
+    bypass_sign_in(current_user)
   end
 
   private
