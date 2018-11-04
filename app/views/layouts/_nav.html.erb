@@ -1,21 +1,26 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark">
   <%= link_to t('title'), root_path, class: 'navbar-brand' %>
+  <div class="navbar-collapse offcanvas-collapse">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <%= link_to t('.business_career'), business_careers_path, class: 'nav-link' %>
+      </li>
+    </ul>
+  </div>
   <div class="navbar-collapse offcanvas-collapse justify-content-end">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <%= link_to t('.profile'), users_profile_path, class: 'btn btn-outline-secondary' %>
+        <%= link_to t('.profile'), users_profile_path, class: 'nav-link' %>
       </li>
       <%= content_tag_if(current_user.role.admin? ,:li, class: 'nav-item dropdown') do %>
         <%= link_to t('.admin'), '#', id: :admins, class: 'nav-link dropdown-toggle', 'data-toggle' => :dropdown, 'aria-haspopup' => true, 'aria-expanded': false %>
         <div class="dropdown-menu" aria-labelledby="admins">
           <%= nav_link t('.admins.user'), admin_users_path, clazz: 'dropdown-item' %>
           <%= nav_link t('.admins.skill'), admin_skills_path, clazz: 'dropdown-item' %>
-          <!-- <a class="dropdown-item active" href="#">Action</a> -->
-          <!-- <a class="dropdown-item" href="#">Another action</a> -->
         </div>
       <% end %>
       <li class="nav-item">
-        <%= link_to t('.logout'), destroy_user_session_path, class: 'btn btn-outline-secondary offset-1', method: :delete %>
+        <%= link_to t('.logout'), destroy_user_session_path, class: 'nav-link', method: :delete %>
       </li>
     </ul>
   </div>

@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      business_career: 業務経歴
+    attributes:
+      business_career:
+        start_month: 開始日
+        end_year_month: 終了日
+        industries: 業種
+        overview: 概要
+        role: 役割
+        work: 作業

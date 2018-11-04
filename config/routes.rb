@@ -18,4 +18,6 @@ Rails.application.routes.draw do
     resources :skills, except: :show
   end
 
+  resources :business_careers
+
 end
