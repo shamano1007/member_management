@@ -36,4 +36,22 @@ RSpec.describe User, type: :model do
       check_for_required(FactoryBot.build(:user), :name, 'なまえ')
     end
   end
+
+  describe '#update_without_current_password' do
+    let(:user) { create(:user) }
+    subject { user.update_without_current_password(password_params) }
+
+    context '正常なパスワードを設定する' do
+      let(:password_params) { { password: '123456', password_confirmation: '123456' } }
+      it { is_expected.to be true }
+    end
+    context 'パスワードを設定しない' do
+      let(:password_params) { { password: '', password_confirmation: '' } }
+      it { is_expected.to be false }
+    end
+    context '異常なパスワードを設定しない' do
+      let(:password_params) { { password: 'ああ', password_confirmation: 'ああ' } }
+      it { is_expected.to be false }
+    end
+  end
 end

@@ -1,5 +1,5 @@
 module DeviseMacros
-  def login_user(params = {}, admin: false)
+  def login_user(admin: false, **params)
     let(:login_user) { admin ? create(:user_admin, params) : create(:user_general, params) }
     before { sign_in login_user }
   end
