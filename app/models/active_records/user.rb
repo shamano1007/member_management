@@ -15,9 +15,17 @@ class User < ApplicationRecord
                        alphanumeric: true, length: { minimum: 6 }
   validates :name, presence: true
   validates :role, presence: true
+  validates :password, presence: true, on: :update_password
   validates :password, presence: true, alphanumeric: true,
                        length: { minimum: 6 }, confirmation: true,
                        if: :password_validate?
+
+  def update_without_current_password(params)
+    assign_attributes(params)
+    result = save(context: :update_password)
+    clean_up_passwords
+    result
+  end
 
   private
 

@@ -1,0 +1,14 @@
+<%= content_tag(:h1, t('.title')) %>
+
+<div id='password_alert'></div>
+
+<%= form_for current_user, url: users_password_path, label_col: 3, field_col: 9, method: :patch, remote: true do |form| %>
+  <%= form.line_field(:password) { |f| f.password_field :password, class: 'form-control' } %>
+  <%= form.line_field(:password_confirmation) { |f| f.password_field :password_confirmation, class: 'form-control' } %>
+
+  <div class="col-12 clearfix">
+    <div class="float-right">
+      <%= form.create_or_update_submit %>
+    </div>
+  </div>
+<% end %>

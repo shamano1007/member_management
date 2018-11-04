@@ -1,4 +1,4 @@
-class ProfilesController < ApplicationController
+class Users::ProfilesController < ApplicationController
   def show
     @profile = current_user.profile || current_user.build_profile
   end
@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
     @profile = current_user.build_profile
     @profile.assign_attributes(profile_params)
     if @profile.save
-      redirect_to profile_path, notice: i18n_message(:create_success)
+      redirect_to users_profile_path, notice: i18n_message(:create_success)
     else
       render :show
     end
@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
     @profile = current_user.profile
     @profile.assign_attributes(profile_params)
     if @profile.save
-      redirect_to profile_path, notice: i18n_message(:update_success)
+      redirect_to users_profile_path, notice: i18n_message(:update_success)
     else
       render :show
     end
