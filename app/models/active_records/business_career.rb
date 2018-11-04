@@ -1,0 +1,2 @@
+class BusinessCareer < ApplicationRecord
+end

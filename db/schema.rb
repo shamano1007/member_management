@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_14_113927) do
+ActiveRecord::Schema.define(version: 2018_11_04_105320) do
+
+  create_table "business_careers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "業務経歴", force: :cascade do |t|
+    t.bigint "user_id"
+    t.date "start_date", comment: "作業開始日"
+    t.date "end_date", comment: "作業終了日"
+    t.string "industries", comment: "業種"
+    t.string "overview", comment: "概要"
+    t.string "role", comment: "役割"
+    t.text "work", comment: "作業内容"
+    t.text "memo", comment: "メモ"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_business_careers_on_user_id"
+  end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
