@@ -3,3 +3,5 @@ validators:
     format: !ruby/regexp /^[a-z|\d]+$/i
   date_validator:
     format: !ruby/regexp /^\d{4}\/\d{1,2}\/\d{1,2}$/i
+  month_validator:
+    format: !ruby/regexp /^\d{4}\/\d{1,2}$/i

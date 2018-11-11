@@ -4,9 +4,14 @@ ja:
       business_career: 業務経歴
     attributes:
       business_career:
-        start_month: 開始日
-        end_year_month: 終了日
+        period: 期間
+        start_date: 開始月
+        end_date: 終了月
         industries: 業種
         overview: 概要
         role: 役割
         work: 作業
+        memo: メモ
+    placeholders:
+      business_career:
+        end_date: 継続中

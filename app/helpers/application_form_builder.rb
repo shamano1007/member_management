@@ -20,7 +20,24 @@ class ApplicationFormBuilder < ActionView::Helpers::FormBuilder
     submit(@template.button_name(key), class: "btn btn-#{key}")
   end
 
+  def text_field_month(method, options = {})
+    options[:value] = I18n.l(@object[method], format: :month) if @object[method]
+    text_field(method, options)
+  end
+
+  def text_field(method, options = {})
+    options[:placeholder] ||= placeholder_text(method)
+    super(method, options)
+  end
+
   private
+
+  def placeholder_text(method)
+    I18n.t(
+      "#{@object.class.i18n_scope}.placeholders.#{@object.model_name.i18n_key}.#{method}",
+      default: ''
+    )
+  end
 
   def content_tag(name, content_or_options_with_block = nil, options = nil, &block)
     @template.content_tag(name, content_or_options_with_block, options, true, &block)

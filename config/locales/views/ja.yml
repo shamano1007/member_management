@@ -16,3 +16,4 @@ ja:
   label:
     closest_line: 線
     closest_station: 駅
+    from_to: '〜'
