@@ -12,6 +12,17 @@ ja:
         role: 役割
         work: 作業
         memo: メモ
+        work: 作業内容
+        work/requirements_analysis: 要件分析
+        work/db_design: DB設計
+        work/basic_design: 基本設計
+        work/detailed_design: 詳細設計
+        work/program_creation: プログラムング作成
+        work/program_test: プログラミングテスト
+        work/join_comprehensive_test: 結合・総合テスト
+        work/implementation: 導入
+        work/system_management: システム管理
+
     placeholders:
       business_career:
         end_date: 継続中

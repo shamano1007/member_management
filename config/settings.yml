@@ -1,3 +1,14 @@
 basic_auth:
   name: '<%= ENV['BASIC_AUTH_USER'] %>'
   password: '<%= ENV['BASIC_AUTH_PASS'] %>'
+
+business_work:
+  - requirements_analysis
+  - db_design
+  - basic_design
+  - detailed_design
+  - program_creation
+  - program_test
+  - join_comprehensive_test
+  - implementation
+  - system_management

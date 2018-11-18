@@ -14,7 +14,14 @@
   <%= form.line_field(:overview, req: true) { |f| f.text_field :overview, class: 'form-control' } %>
   <%= form.line_field(:role) { |f| f.text_field :role, class: 'form-control' } %>
 
-<%# TODO: work についてはjson形式でもったデータから生成する, デコレーターを使用する %>
+  <%= content_tag(:div, class: 'form-group row') do %>
+    <%= form.content_label(:work) %>
+    <%= content_tag(:div, class: 'col-9 row') do %>
+      <% business_career.form_works.each_slice(3) do |works|  %>
+        <%= safe_join(works.map{ |work| content_tag(:div, work, class: 'col-3 col-form-label') }) %>
+      <% end %>
+    <% end %>
+  <% end %>
 
   <%= form.line_field(:memo) { |f| f.text_area :memo, class: 'form-control' } %>
 
