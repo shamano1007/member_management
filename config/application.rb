@@ -36,6 +36,7 @@ module MemberManagement
     # modelsフォルダの階層を変更
     config.paths.add "#{Rails.root}/app/models/validators", eager_load: true
     config.paths.add "#{Rails.root}/app/models/active_records", eager_load: true
+    config.paths.add "#{Rails.root}/app/models/decorators", eager_load: true
 
     # mailer setting
     config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }

@@ -40,6 +40,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap-datepicker-rails'
 
+gem 'active_decorator'
+
 gem 'seed-fu'
 
 gem 'devise'
