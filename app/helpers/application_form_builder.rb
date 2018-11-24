@@ -30,6 +30,11 @@ class ApplicationFormBuilder < ActionView::Helpers::FormBuilder
     super(method, options)
   end
 
+  def text_area(method, options = {})
+    options[:placeholder] ||= placeholder_text(method)
+    super(method, options)
+  end
+
   private
 
   def placeholder_text(method)

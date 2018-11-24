@@ -26,3 +26,4 @@ ja:
     placeholders:
       business_career:
         end_date: 継続中
+        memo: 出力対象ではなく、メモとして使用する
