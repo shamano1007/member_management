@@ -1,5 +1,5 @@
 ---
-name: [バグ]
+name: bug
 about: バグ用テンプレート
 
 ---

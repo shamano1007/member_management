@@ -1,5 +1,5 @@
 ---
-name: [機能]
+name: feature
 about: 機能テンプレート
 
 ---
