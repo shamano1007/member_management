@@ -20,6 +20,9 @@ class BusinessCareersController < ApplicationController
 
   def business_career_params
     params.require(:business_career)
-          .permit(:start_date, :end_date, :industries, :overview, :role, :memo)
+          .permit(
+            :start_date, :end_date, :industries, :overview, :role, :memo,
+            *BusinessCareer.work_columns.map { |o| o[:name] }
+          )
   end
 end
