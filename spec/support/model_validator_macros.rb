@@ -60,14 +60,27 @@ module ModelValidatorMacros
     end
   end
 
+  def check_for_date_month(model, column)
+    context '正しい日付' do
+      before { model.public_send("#{column}=", '2018/10') }
+      validator_success(model)
+    end
+    context '不正な日付フォーマット' do
+      before { model.public_send("#{column}=", 'aaaa/aa') }
+      validator_error(model, column)
+    end
+    context '不正な日付' do
+      before { model.public_send("#{column}=", '2018/13') }
+      validator_error(model, column)
+    end
+  end
+
   def validator_error(model, column)
     it 'エラーになること' do
       expect(model.valid?).to be false
       expect(model.errors[column]).to be_present
     end
   end
-
-  private
 
   def validator_success(model)
     it 'エラーにならないこと' do
