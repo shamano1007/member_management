@@ -7,7 +7,7 @@ class MonthValidator < Base
     value = record.public_send("#{attribute}_before_type_cast")
     return if options[:blank] && value.blank?
 
-    if [valid_format?(value), date_valid?(value)].all?
+    if [valid_format?(value, exclusion: Date), date_valid?(value)].all?
       record[attribute] = registration_value(value, attribute)
     else
       record.errors.add(attribute, :month)

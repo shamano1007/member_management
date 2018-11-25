@@ -38,7 +38,7 @@ class BusinessCareer < ApplicationRecord
 
   def work_columns_setting(params)
     BusinessCareer.work_columns.each_with_object({}) do |info, o|
-      o[info[:column]] = str_true?(params.delete(info[:name]))
+      o[info[:column]] = str_true?(params&.delete(info[:name]))
     end
   end
 
