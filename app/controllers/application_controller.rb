@@ -6,6 +6,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def save(model, success_path, error_render)
+    if model.save
+      redirect_to success_path, notice: i18n_message(:"#{action_name}_success")
+    else
+      render error_render
+    end
+  end
+
   def i18n_message(type)
     I18n.t("messages.#{type}")
   end

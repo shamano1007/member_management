@@ -6,3 +6,7 @@ ja:
       title: 業務経歴追加
     create:
       title: 業務経歴追加
+    edit:
+      title: 業務経歴編集
+    update:
+      title: 業務経歴編集
