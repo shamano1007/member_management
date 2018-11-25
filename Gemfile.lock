@@ -79,6 +79,7 @@ GEM
       deep_merge (~> 1.2.1)
       dry-validation (>= 0.10.4)
     crass (1.0.4)
+    database_cleaner (1.7.0)
     deep_merge (1.2.1)
     devise (4.5.0)
       bcrypt (~> 3.0)
@@ -309,6 +310,7 @@ DEPENDENCIES
   bootstrap-datepicker-rails
   coffee-rails (~> 4.2)
   config
+  database_cleaner
   devise
   enumerize
   factory_bot_rails
