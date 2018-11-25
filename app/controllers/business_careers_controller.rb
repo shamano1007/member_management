@@ -11,14 +11,18 @@ class BusinessCareersController < ApplicationController
 
   def create
     @business_career = current_user.business_careers.build(business_career_params)
-    save(@business_career, business_careers_path, :new)
+    save_process(@business_career, business_careers_path, :new)
   end
 
   def edit; end
 
   def update
     @business_career.assign_attributes(business_career_params)
-    save(@business_career, business_careers_path, :edit)
+    save_process(@business_career, business_careers_path, :edit)
+  end
+
+  def destroy
+    destroy_process(BusinessCareer.find_by(params[:id]), business_careers_path)
   end
 
   private
