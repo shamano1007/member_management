@@ -17,3 +17,5 @@ ja:
     closest_line: 線
     closest_station: 駅
     from_to: '〜'
+  in_continuous: 継続中
+  period: "%{start}〜%{end}"

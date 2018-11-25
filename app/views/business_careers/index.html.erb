@@ -1,6 +1,31 @@
-<%# TODO: 登録後に作成する %>
 <div class="col-12 clearfix">
   <div class="float-right">
     <%= new_button(new_business_career_path) %>
   </div>
 </div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th><%= BusinessCareer.human_attribute_name :period %></th>
+      <th><%= BusinessCareer.human_attribute_name :industries %></th>
+      <th><%= BusinessCareer.human_attribute_name :overview %></th>
+      <th><%= BusinessCareer.human_attribute_name :role %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @business_careers&.each do |business_career| %>
+      <tr>
+        <td class="no_space"><%= business_career.show_period %></td>
+        <td><%= business_career.industries %></td>
+        <td><%= business_career.overview %></td>
+        <td><%= business_career.role %></td>
+        <td class="operation">
+          <%= edit_button(edit_business_career_path(business_career)) %>
+          <%= destroy_button(business_career_path(business_career)) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

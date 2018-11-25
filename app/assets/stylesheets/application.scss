@@ -28,6 +28,11 @@ table {
   thead {
     background-color: rgba(255, 255, 128, .5);
   }
+  .no_space {
+    width: 1%;
+    white-space: nowrap;
+  }
+
   .operation {
     width: 5%;
     padding: 0.25rem;

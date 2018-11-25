@@ -5,6 +5,11 @@ module BusinessCareerDecorator
     end
   end
 
+  def show_period
+    end_label = end_date ? l(end_date, format: :month) : t(:in_continuous)
+    t(:period, start: l(start_date, format: :month), end: end_label)
+  end
+
   private
 
   def form_html(info)
