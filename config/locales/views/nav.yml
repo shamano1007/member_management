@@ -2,6 +2,7 @@ ja:
   layouts:
     nav:
       logout: ログアウト
+      business_career: 業務経歴
       profile: プロフィール
       admin: 管理
       admins:

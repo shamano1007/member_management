@@ -23,4 +23,11 @@ $(document).on('turbolinks:load', function(){
     language: 'ja',
     autoclose: true
   });
+
+  $('.datepicker_month').datepicker({
+    language: 'ja',
+    autoclose: true,
+    minViewMode: 'months',
+    format: 'yyyy/mm'
+  });
 });
