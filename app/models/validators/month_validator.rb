@@ -18,7 +18,7 @@ class MonthValidator < Base
 
   def registration_value(value, attribute)
     value = Date.parse("#{value}/01")
-    value = Date.new(value.year, value.month, -1) if attribute.to_s.include?('end')
+    value = value.end_of_month if attribute.to_s.include?('end')
     value
   end
 
