@@ -68,4 +68,5 @@ RSpec.configure do |config|
   config.extend DeviseMacros, type: :request
   config.include ModelMacros, type: :request
   config.extend ModelValidatorMacros, type: :model
+  config.include DecoratorSpecHelper, type: :decorator
 end
