@@ -30,3 +30,10 @@
 # railseサーバー起動
 `webコンテナ`に接続する  
 `$ rails s -b 0.0.0.0`  
+
+# メモ
+## heroku
+https://member-management-s.herokuapp.com
+
+## circleci
+https://circleci.com/gh/shamano1007/member_management
