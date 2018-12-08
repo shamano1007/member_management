@@ -35,5 +35,5 @@
 ## heroku
 https://member-management-s.herokuapp.com
 
-## circleci
-https://circleci.com/gh/shamano1007/member_management
+## codeclimate
+https://codeclimate.com/github/shamano1007/member_management
