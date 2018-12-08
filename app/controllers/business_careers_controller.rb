@@ -22,7 +22,7 @@ class BusinessCareersController < ApplicationController
   end
 
   def destroy
-    destroy_process(BusinessCareer.find_by(params[:id]), business_careers_path)
+    destroy_process(BusinessCareer.find_by(id: params[:id]), business_careers_path)
   end
 
   private
