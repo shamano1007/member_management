@@ -1,25 +1,19 @@
 <%= error_messages(business_career) %>
 
 <%= form_for business_career, label_col: 3, field_col: 9 do |form| %>
-  <%= content_tag(:div, class: 'form-group row') do %>
-    <%= form.content_label(:period, req: true) %>
-    <%= content_tag(:div, class: 'col-9 row') do %>
-      <%= content_tag(:div, form.text_field_month(:start_date, class: 'form-control datepicker_month', autocomplete: 'off'), class: 'col-4') %>
-      <%= content_tag(:div, t('label.from_to'), class: 'col-1 col-form-label') %>
-      <%= content_tag(:div, form.text_field_month(:end_date, class: 'form-control datepicker_month', autocomplete: 'off'), class: 'col-4') %>
-    <% end %>
+  <%= form.line_field(:industries, field_class: 'row') do %>
+    <%= content_tag(:div, form.text_field_month(:start_date, class: 'form-control datepicker_month', autocomplete: 'off'), class: 'col-4') %>
+    <%= content_tag(:div, t('label.from_to'), class: 'col-1 col-form-label') %>
+    <%= content_tag(:div, form.text_field_month(:end_date, class: 'form-control datepicker_month', autocomplete: 'off'), class: 'col-4') %>
   <% end %>
 
   <%= form.line_field(:industries, req: true) { |f| f.text_field :industries, class: 'form-control' } %>
   <%= form.line_field(:overview, req: true) { |f| f.text_field :overview, class: 'form-control' } %>
   <%= form.line_field(:role) { |f| f.text_field :role, class: 'form-control' } %>
 
-  <%= content_tag(:div, class: 'form-group row') do %>
-    <%= form.content_label(:work) %>
-    <%= content_tag(:div, class: 'col-9 row') do %>
-      <% business_career.form_works.each_slice(3) do |works|  %>
-        <%= safe_join(works.map{ |work| content_tag(:div, work, class: 'col-3 col-form-label') }) %>
-      <% end %>
+  <%= form.line_field(:work, field_class: 'row') do %>
+    <% business_career.form_works.each_slice(3) do |works|  %>
+      <%= safe_join(works.map{ |work| content_tag(:div, work, class: 'col-3 col-form-label') }) %>
     <% end %>
   <% end %>
 
