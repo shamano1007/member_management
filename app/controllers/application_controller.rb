@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   def save_process(model, success_path, error_render)
     if model.save
       redirect_to success_path, notice: i18n_message(:"#{action_name}_success")
+      yield if block_given?
     else
       render error_render
     end
