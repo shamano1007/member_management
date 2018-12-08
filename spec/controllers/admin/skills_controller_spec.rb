@@ -129,6 +129,12 @@ RSpec.describe Admin::SkillsController, type: :request do
       let!(:skill2) { create(:skill, name: 'deleteSkill2') }
       context 'スキルを削除' do
         before { delete admin_skill_path(skill2) }
+
+        it '成功すること' do
+          expect(response).to have_http_status(:found)
+          expect(response).to redirect_to(:admin_skills)
+        end
+
         it '削除されること' do
           expect(Skill.exists?(id: skill1.id)).to be true
           expect(Skill.exists?(id: skill2.id)).to be false

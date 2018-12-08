@@ -85,6 +85,7 @@ RSpec.describe BusinessCareersController, type: :request do
       end
     end
   end
+
   describe 'PATCH #edit' do
     non_login_spec(:patch, :business_career_path, 1)
 
@@ -136,6 +137,30 @@ RSpec.describe BusinessCareersController, type: :request do
               end_date: Date.parse(before_business_career[:end_date]).end_of_month
             )
           )
+        end
+      end
+    end
+  end
+
+  describe 'delete #destroy' do
+    non_login_spec(:delete, :business_career_path, 1)
+
+    context 'ログイン済み' do
+      login_user
+      let!(:business_career1) { create(:business_career, user_id: login_user.id) }
+      let!(:business_career2) { create(:business_career, user_id: login_user.id) }
+
+      context '削除' do
+        before { delete business_career_path(business_career2) }
+
+        it '成功すること' do
+          expect(response).to have_http_status(:found)
+          expect(response).to redirect_to(:business_careers)
+        end
+
+        it '削除されること' do
+          expect(BusinessCareer.exists?(id: business_career1.id)).to be true
+          expect(BusinessCareer.exists?(id: business_career2.id)).to be false
         end
       end
     end
