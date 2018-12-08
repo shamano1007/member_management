@@ -1,10 +1,12 @@
 class ApplicationFormBuilder < ActionView::Helpers::FormBuilder
-  # TODO: ブロックの渡し方 do ~ end の場合、意図しない動きをする
-  def line_field(label, req: false)
+  def line_field(label, line_options = {}, &block)
+    req = line_options[:req] || false
+    field_class = line_options[:field_class]
     content_tag(:div, class: 'form-group row') do
       safe_join([
                   content_label(label, req: req),
-                  content_tag(:div, yield(self), class: "col-#{options[:field_col]}")
+                  content_tag(:div, @template.capture(self, &block),
+                              class: "col-#{options[:field_col]} #{field_class}")
                 ])
     end
   end
