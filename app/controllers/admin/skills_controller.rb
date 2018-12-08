@@ -9,11 +9,7 @@ class Admin::SkillsController < Admin::BaseController
 
   def create
     @skill = Skill.new(skill_params)
-    if @skill.save
-      redirect_to admin_skills_path, notice: i18n_message(:create_success)
-    else
-      render :new
-    end
+    save_process(@skill, admin_skills_path, :new)
   end
 
   def edit
@@ -23,11 +19,7 @@ class Admin::SkillsController < Admin::BaseController
   def update
     @skill = Skill.find(params[:id])
     @skill.assign_attributes(skill_params)
-    if @skill.save
-      redirect_to admin_skills_path, notice: i18n_message(:update_success)
-    else
-      render :edit
-    end
+    save_process(@skill, admin_skills_path, :edit)
   end
 
   def destroy

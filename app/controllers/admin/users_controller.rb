@@ -9,11 +9,7 @@ class Admin::UsersController < Admin::BaseController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      redirect_to admin_users_path, notice: i18n_message(:create_success)
-    else
-      render :new
-    end
+    save_process(@user, admin_users_path, :new)
   end
 
   def edit
@@ -23,11 +19,8 @@ class Admin::UsersController < Admin::BaseController
   def update
     @user = User.find(params[:id])
     @user.assign_attributes(user_params)
-    if @user.save
+    save_process(@user, admin_users_path, :edit) do
       bypass_sign_in(@user) if current_user.id == @user.id
-      redirect_to admin_users_path, notice: i18n_message(:update_success)
-    else
-      render :edit
     end
   end
 
