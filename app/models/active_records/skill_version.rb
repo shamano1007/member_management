@@ -1,0 +1,2 @@
+class SkillVersion < ApplicationRecord
+end

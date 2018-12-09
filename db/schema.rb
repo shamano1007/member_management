@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_04_105320) do
+ActiveRecord::Schema.define(version: 2018_12_09_091640) do
 
   create_table "business_careers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "業務経歴", force: :cascade do |t|
     t.bigint "user_id"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(version: 2018_11_04_105320) do
     t.datetime "updated_at", null: false
     t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
+  create_table "skill_versions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "スキルバージョン", force: :cascade do |t|
+    t.bigint "skill_id"
+    t.string "version", null: false, comment: "バージョン"
+    t.text "remarks", comment: "備考"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_skill_versions_on_skill_id"
   end
 
   create_table "skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
