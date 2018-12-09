@@ -25,6 +25,12 @@ form {
 }
 
 table {
+  &.bulk {
+    td {
+      padding: 1px 5px;
+    }
+  }
+
   thead {
     background-color: rgba(255, 255, 128, .5);
   }
@@ -47,6 +53,7 @@ table {
   &.btn-edit { @include button-variant(#28a745, #28a745); }
   &.btn-update { @include button-variant(#28a745, #28a745); }
   &.btn-destroy { @include button-variant(#dc3545, #dc3545); }
+  &.btn-version { @include button-variant(#a835dc, #a835dc); }
 }
 
 .alert {

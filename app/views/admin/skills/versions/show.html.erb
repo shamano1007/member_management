@@ -1,0 +1,30 @@
+<%= form_tag [:admin, @skill, :versions], method: :post do %>
+  <table class="table table-bordered bulk">
+    <thead>
+      <tr>
+        <th><%= SkillVersion.human_attribute_name :version %></th>
+        <th><%= SkillVersion.human_attribute_name :remarks %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @skill_versions&.each do |version| %>
+        <%= fields_for version do |f| %>
+          <tr>
+            <td><%= f.text_field :version, class: 'form-control' %></td>
+            <td><%= f.text_area :remarks, class: 'form-control', rows: 1 %></td>
+            <td class="operation">
+              
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="col-12 clearfix">
+    <div class="float-right">
+      <%= back_button(admin_skills_path) %>
+    </div>
+  </div>
+<% end %>

@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, except: :show
-    resources :skills, except: :show
+    resources :skills, except: :show do
+      resource :versions, only: %i[show create], module: :skills
+    end
   end
 
   resources :business_careers

@@ -23,4 +23,8 @@ class ApplicationController < ActionController::Base
   def i18n_message(type)
     I18n.t("messages.#{type}")
   end
+
+  def page_title_options(options)
+    @title_options = options
+  end
 end

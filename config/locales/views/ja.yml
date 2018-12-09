@@ -8,6 +8,7 @@ ja:
     edit: 編集
     update: 更新
     destroy: 削除
+    version: バージョン
   messages:
     create_success: 登録が完了しました。
     update_success: 更新が完了しました。

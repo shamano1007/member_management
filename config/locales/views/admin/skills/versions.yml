@@ -1,0 +1,8 @@
+ja:
+  admin:
+    skills:
+      versions:
+        show:
+          title: "%{skill}バージョン一覧"
+        create:
+          title: "%{skill}バージョン一覧"

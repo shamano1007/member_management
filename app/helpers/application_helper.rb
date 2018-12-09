@@ -1,6 +1,6 @@
 module ApplicationHelper
   def page_title
-    t("#{controller_path.tr('/', '.')}.#{action_name}.title")
+    t("#{controller_path.tr('/', '.')}.#{action_name}.title", @title_options || {})
   end
 
   def nav_link(title, path, clazz: nil)
