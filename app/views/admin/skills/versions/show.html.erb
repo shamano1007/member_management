@@ -1,5 +1,5 @@
-<%= form_tag [:admin, @skill, :versions], method: :post do %>
-  <table class="table table-bordered bulk">
+<%= form_for @skill, url: admin_skill_versions_path(@skill), method: :put do |form| %>
+  <table class="table table-bordered bulk" id="bulkOperationTable">
     <thead>
       <tr>
         <th><%= SkillVersion.human_attribute_name :version %></th>
@@ -8,22 +8,27 @@
       </tr>
     </thead>
     <tbody>
-      <% @skill_versions&.each do |version| %>
-        <%= fields_for version do |f| %>
-          <tr>
-            <td><%= f.text_field :version, class: 'form-control' %></td>
-            <td><%= f.text_area :remarks, class: 'form-control', rows: 1 %></td>
-            <td class="operation">
-              
-            </td>
-          </tr>
-        <% end %>
+      <%= form.nested_fields_for :versions, wrapper_tag: :tr do |f| %>
+        <tr>
+          <td>
+            <%= f.hidden_field :id %>
+            <%= f.text_field :version, class: 'form-control' %>
+          </td>
+          <td><%= f.text_area :remarks, class: 'form-control', rows: 1 %></td>
+          <td class="operation">
+            <%#= link_to t('buttons.add'), 'javascript:addBtn()' %>
+            <%#= link_to t('buttons.decrement'), 'javascript:decrementBtn()' %>
+            <%= form.add_nested_fields_link :versions, t('buttons.add') %>
+            <%= form.remove_nested_fields_link t('buttons.decrement') %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>
 
   <div class="col-12 clearfix">
     <div class="float-right">
+      <%= update_button %>
       <%= back_button(admin_skills_path) %>
     </div>
   </div>

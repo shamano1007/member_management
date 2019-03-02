@@ -49,6 +49,7 @@ gem 'devise'
 gem 'bootstrap', '~> 4.1.3'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
+gem 'nested_form_fields'
 
 gem 'mini_racer'
 

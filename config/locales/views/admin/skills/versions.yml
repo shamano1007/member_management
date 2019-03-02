@@ -4,5 +4,5 @@ ja:
       versions:
         show:
           title: "%{skill}バージョン一覧"
-        create:
+        update:
           title: "%{skill}バージョン一覧"

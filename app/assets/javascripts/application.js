@@ -12,12 +12,13 @@
 //
 //= require jquery
 //= require rails-ujs
+//= jquery-ujs-part
 // require activestorage
 //= require turbolinks
 //= require bootstrap
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.ja.js
-//= require bulk_operation_table
+//= require nested_form_fields
 
 $(document).on('turbolinks:load', function(){
   $('.datepicker').datepicker({

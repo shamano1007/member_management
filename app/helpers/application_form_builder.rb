@@ -19,7 +19,7 @@ class ApplicationFormBuilder < ActionView::Helpers::FormBuilder
 
   def create_or_update_submit
     key = @object.new_record? ? :create : :update
-    submit(@template.button_name(key), class: "btn btn-#{key}")
+    @template.public_send(:"#{key}_button")
   end
 
   def text_field_month(method, options = {})
